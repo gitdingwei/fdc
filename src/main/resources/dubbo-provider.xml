@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://code.alibabatech.com/schema/dubbo
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="dubbo-service" />
+    <!-- 使用multicast广播注册中心暴露服务地址 -->
+    <!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
+    <!-- 使用zookeeper注册中心暴露服务地址 -->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" />
+    <!-- 用dubbo协议在20880端口暴露服务 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+    <!-- 声明需要暴露的服务接口 -->
+    <dubbo:service interface="com.mt.service.MtService"
+                   ref="MtService" />
+    <dubbo:service interface="com.mt.service.WddService"
+                   ref="WddService" />
+    <dubbo:service interface="com.mt.service.DwService"
+                   ref="DwService" />
+    <dubbo:service interface="com.mt.service.HcyService"
+                   ref="HcyService" />
+    <dubbo:service interface="com.mt.service.XycService"
+                   ref="XycService" />
+    <dubbo:service interface="com.mt.service.XslService"
+                   ref="XslService" />
+    <dubbo:service interface="com.mt.service.SyService"
+                   ref="SyService" />
+    <dubbo:service interface="com.mt.service.JuriService"
+                   ref="JuriService" />
+    <!-- 和本地bean一样实现服务 -->
+    <bean id="MtService" class="com.mt.service.impl.MtServiceImpl" />
+    <bean id="WddService" class="com.mt.service.impl.WddServiceImpl" />
+    <bean id="DwService" class="com.mt.service.impl.DwServiceImpl" />
+    <bean id="HcyService" class="com.mt.service.impl.HcyServiceImpl" />
+    <bean id="XycService" class="com.mt.service.impl.XycServiceImpl" />
+    <bean id="XslService" class="com.mt.service.impl.XslServiceImpl" />
+    <bean id="SyService" class="com.mt.service.impl.SyServiceImpl" />
+    <bean id="JuriService" class="com.mt.service.impl.JuriServiceImpl" />
+</beans>
